@@ -3,6 +3,7 @@
 The goal of this Analysis is to use neural network models (tensorflow, keras) to genereate a predictive model that estimates the likelihood of certain charity fundings being successful.  The models we built with these libraries are designed to help identify factors in the dataset that contribute positively to funding approval.  These factors can then be used to improve selection and decisions for future charity candidates.
 
 ## Results of Analysis
+### Preprocessing the Data
 - Target Variable 
   - IS_SUCCESSFUL : This variable shows whether a charity funding was successful (1) or not successful (0)
 
@@ -21,4 +22,38 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
  
     ![image](https://github.com/user-attachments/assets/de403e3a-afe8-4b2c-879e-9b671961931b)
 
-  - ASK_AMT, STATUS : these numerical categories 
+  - ASK_AMT, STATUS : these numerical features are factored into the X of the test data
+
+    ![image](https://github.com/user-attachments/assets/af103884-d124-4e2e-aef3-8e3a17038cd9)
+
+  - EIN, NAME, USE_CASE, ORGANIZATION : these features are dropped from the dataset as they don't contribute to the prediction models
+
+    ![image](https://github.com/user-attachments/assets/b861d321-d687-4e0c-aa16-42a3fa2fc90d)
+
+  - When splitting the dataset to compile the model and test it, the features above are grouped into "Y" (IS_SUCCESSFUL), and "X" APPLICATION_TYPE, CLASSIFICATION, AFFILIATION, INCOME_AMT, SPECIAL_CONSIDERATIONS, ASK_AMT, STATUS
+ 
+### Compiling, Training, and Evaluating the Model
+
+  - In the first iteration, I used the below combination of settings when creating the neural network model:
+    - Two hidden layers (80 neurons, 30 neurons)
+    - 100 Epochs
+    - 2 layer activation functions (reLU) and 1 output activation function (sigmoid)
+       
+      ![image](https://github.com/user-attachments/assets/2aeee181-a033-462e-82e0-0423b8b5ddee)
+
+    - the results of this prediction model was a 72.78% accuracy.  3% short of the 75% goal
+
+      ![image](https://github.com/user-attachments/assets/b2e38c18-31a5-40ec-b17c-7b6137f4c3c4)
+
+  - In the second iteration, more optimization was attempted by adjusting the combination of model settings to the below:
+    - Three hidden layers (128 neurons, a batch normalization, 64 neurons, 32 neurons)
+    - 200 epochs
+    - 3 layer activation functions (reLU) and 1 output activation function (sigmoid)
+
+      ![image](https://github.com/user-attachments/assets/6fe251c0-3280-45a6-8786-9ec6ac3526d3)
+
+    - the results of this prediction model was a 72.69% accuracy.  Still 3% short of the 75% goal, without much of an improvement over the first iteration
+
+      ![image](https://github.com/user-attachments/assets/d87c5eea-17e1-45c3-95b3-045ce9662c6b)
+
+  - In the third iteration, even further optimization was attempted by adjusting the combination of model settings to the below:
