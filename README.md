@@ -38,6 +38,7 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
     - Two hidden layers (80 neurons, 30 neurons)
     - 100 Epochs
     - 2 layer activation functions (reLU) and 1 output activation function (sigmoid)
+    - Optimizer Type: Adam
        
       ![image](https://github.com/user-attachments/assets/2aeee181-a033-462e-82e0-0423b8b5ddee)
 
@@ -49,6 +50,7 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
     - Three hidden layers (128 neurons, a batch normalization, 64 neurons, 32 neurons)
     - 200 epochs
     - 3 layer activation functions (reLU) and 1 output activation function (sigmoid)
+    - Optimizer Type: Adam
 
       ![image](https://github.com/user-attachments/assets/6fe251c0-3280-45a6-8786-9ec6ac3526d3)
 
@@ -60,6 +62,7 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
     - Four hidden layers (256 neurons, a batch normalization, 128 neurons, a batch normalization, 64 neurons, 32 neurons)
     - 200 Epochs
     - Four layer activation functions (reLU) and 1 output activation function (sigmoid)
+    - Optimizer Type: RMSprop
 
       ![image](https://github.com/user-attachments/assets/944f852a-878c-4ac0-ab09-10fd71890166)
 
@@ -74,6 +77,7 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
     - In the preprocessing of the data, more unncessary columns were dropped (EIN, NAME, USE_CASE, ORGANIZATION)
     - Also, the upper limit of "rare" results for APPLICATION_TYPE was increased to 600 to remove more outliers
     - Similarly, the upper limit of CLASSIFICATION results was raised to 2000 to remove more rare outliers
+    - Optimizer Type: SGD
 
       ![image](https://github.com/user-attachments/assets/80a9d5d6-1c29-46c7-bce4-7eb0bd1f6bb7)
 
@@ -81,6 +85,11 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
 
       ![image](https://github.com/user-attachments/assets/52fe8882-41ab-436f-b2f0-65c291ded180)
 
+## Analysis Summary
 
+Overall, this model was moderately successful at predicting if certain application types were likely to be successfully funded.  There is definitely more room for improvement as an accuracy percentage of over 75% would be ideal to be able to apply the model to future application types and trust the likelihood results.  Even when tweaking the preprocessing data (removing more unnecessary columns, grouping more rare occrances into the "Other" category to reduce skewing) as well as tweaking the model properties (adding more epochs, using three different optimizers like SGD, Adam, and RMSprop, adding more layers and neurons to the models), the model accuracy was not improved by even a full percentage point.  There aren't many other tweaks that can be made to this model in order to resolve this.  These 4 iterations resulting in almost identical accuracy percentages of under 75% suggest that this model is just not sufficient for this dataset. 
 
-
+It can be assumed that other types of neural network models need to be implemented to improve this accuracy.  These models could be:
+  - XGBoost : this is an algorithm that in some cases outperforms neural networks for certain datasets
+  - Logistic Regression or SVM : these are simpler models that may behave better for this particular dataset
+  - Random Forest Classifier - this model may be better suited to the structure of this dataset becasue of all the categorical features in this dataset
