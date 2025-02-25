@@ -57,3 +57,30 @@ The goal of this Analysis is to use neural network models (tensorflow, keras) to
       ![image](https://github.com/user-attachments/assets/d87c5eea-17e1-45c3-95b3-045ce9662c6b)
 
   - In the third iteration, even further optimization was attempted by adjusting the combination of model settings to the below:
+    - Four hidden layers (256 neurons, a batch normalization, 128 neurons, a batch normalization, 64 neurons, 32 neurons)
+    - 200 Epochs
+    - Four layer activation functions (reLU) and 1 output activation function (sigmoid)
+
+      ![image](https://github.com/user-attachments/assets/944f852a-878c-4ac0-ab09-10fd71890166)
+
+    - The results of this prediction model was 72.50%.  Still 3% short of the 75% goal and actually worse than the previous model
+
+      ![image](https://github.com/user-attachments/assets/cd871ffd-8795-415a-b206-fcc72da3d23b)
+
+  - In the fourth iteration, a final optimization was attempted by adjusting the combination of model settings to the below:
+    - Four hidden layers (256 neurons, a batch normalization, 128 neurons, a batch normalization, 64 neurons, 32 neurons)
+    - 50 Epochs
+    - Four layer activation functions (leakyRELU) and 1 output activation function (sigmoid)
+    - In the preprocessing of the data, more unncessary columns were dropped (EIN, NAME, USE_CASE, ORGANIZATION)
+    - Also, the upper limit of "rare" results for APPLICATION_TYPE was increased to 600 to remove more outliers
+    - Similarly, the upper limit of CLASSIFICATION results was raised to 2000 to remove more rare outliers
+
+      ![image](https://github.com/user-attachments/assets/80a9d5d6-1c29-46c7-bce4-7eb0bd1f6bb7)
+
+    - The results of this prediction model was 72.18%.  Yet still 3% short of the 75% goal
+
+      ![image](https://github.com/user-attachments/assets/52fe8882-41ab-436f-b2f0-65c291ded180)
+
+
+
+
